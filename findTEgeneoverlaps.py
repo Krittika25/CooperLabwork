@@ -11,9 +11,11 @@ def getTEcoords(TEfile,geneloc):
                 for geneline in g:
                     if not geneline.startswith("#") and not geneline.startswith("tig"):
                         geneline=geneline.rstrip().split("\t")
-                        chrom=geneline[0].split('_')[0].strip("Chr")
+                        chrom=geneline[0].split('_')[0].strip("Chr0")
+                        if geneline[0]=='Chr10_RagTag':
+                            chrom=geneline[0].split('_').strip("Chr")
                         #check if the TE boundaries are within the gene boundary
-                        if int(TEline[0]) == int(chrom) and int(TEline[6]) >= int(geneline[3]) and int(TEline[7]) <= int(geneline[4]) and geneline[2] in ("gene"):
+                        if TEline[0] == chrom and int(TEline[6]) >= int(geneline[3]) and int(TEline[7]) <= int(geneline[4]) and geneline[2] in ("gene"):
                             if geneline[8].find("ID=") != -1:
                                 #storing the whole gene ids since they have differing patterns
                                 geneID = geneline[8].split(";")[0].split("=")[1]
