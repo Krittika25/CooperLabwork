@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2)
 library(dplyr)  #has the merge function
 library(tidyverse) #has the reduce function
-library(reshape2) #This library has the melt function
+library(reshape2) #has the melt function
 library(readxl)
 library(colorspace)
 library(viridis)
@@ -43,18 +43,13 @@ datamelt <- melt(mergedinfo, id="Tefam")
 ```
 
 
-
-```{r}
-myplot <- ggplot(datamelt, aes(fill=Tefam, x=variable, y=value)) + geom_bar(position="fill",stat="identity") + theme_classic() + xlab("") + ylab("Percentage of TEs") + coord_flip() + scale_fill_viridis(discrete=T,option="rocket")
-myplot
-```
-
 ```{r}
 bplot <- ggplot(datamelt, aes(fill=Tefam, x=variable, y=value)) + geom_bar(position="fill",stat="identity") + theme_classic() + xlab("") + ylab("Percentage of TEs") + coord_flip() +  scale_fill_manual(values=c("#88CCEE", "#CC6677", "#DDCC77", "#117733", "#332288", "#AA4499", "#44AA99", "#999933", "#882255", "#661100", "#6699CC", "#888888")) +
  theme(text=element_text(size=12,  family="sans")) +
   labs(fill="TE families")
 
 ```
+
 ```{r}
 setwd('~/Documents/TEfasta/TEpos')
 
