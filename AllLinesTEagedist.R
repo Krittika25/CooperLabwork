@@ -1,9 +1,7 @@
 setwd("~/Documents/TEfasta")
 options(stringsAsFactors=FALSE)
 library(ggplot2)
-#install.packages("hrbrthemes")
 library(hrbrthemes)
-#library(gridExtra)
 ### ggpubr contains the ggarrange function
 library(ggpubr)
 
@@ -161,7 +159,7 @@ pi655chr.results = subset(pi655results, pi655results$CHR==1)
 
 
 
-### Alt color scheme 1
+
 
 p1 <- ggplot(data=leotichr.results[,2:3], aes(x=POS, y=1, fill=MEAN_AGE)) + 
   geom_tile() +
@@ -215,7 +213,6 @@ p10 <- ggplot(data=pi655chr.results[,2:3], aes(x=POS, y=1, fill=MEAN_AGE)) +
   theme_ipsum()
 
 
-#grid.arrange(p1,p2,p3,p4,p5, nrow=5)
 
 myplot <- ggarrange(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,nrow=10,common.legend = TRUE, labels= c("Leoti","Rio","CA","pi229841","pi297155","pi300119","pi319311","pi506069","pi510757","pi655972"), legend ="bottom")
 
